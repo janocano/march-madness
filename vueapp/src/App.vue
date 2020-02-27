@@ -1,16 +1,6 @@
 <template>
   <div id="app">
     <img alt="Vue logo" src="./assets/logo.png">
-    <base-button type="default">
-      <template slot="text">
-        Submit
-      </template>
-    </base-button>
-    <base-button type="cancel">
-      <template slot="text">
-        Cancel
-      </template>
-    </base-button>
   </div>
 </template>
 
