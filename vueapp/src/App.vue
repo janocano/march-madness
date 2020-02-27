@@ -1,17 +1,26 @@
 <template>
   <div id="app">
     <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <base-button type="default">
+      <template slot="text">
+        Submit
+      </template>
+    </base-button>
+    <base-button type="cancel">
+      <template slot="text">
+        Cancel
+      </template>
+    </base-button>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import BaseButton from "./components/BaseButton.vue";
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    BaseButton
   }
 }
 </script>
