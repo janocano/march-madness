@@ -51,6 +51,7 @@ export default {
     border-radius: 1px 6px 1px 6px;
     padding: 5px 10px;
     border: none;
+    cursor: pointer;
 }
 .baseButton--default {
     background-color: peachpuff;
