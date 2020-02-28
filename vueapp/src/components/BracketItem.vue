@@ -1,6 +1,7 @@
 <template>
     <div 
         class="bracketItem"
+        @click="chooseWinner()"
     >
         {{ team.name }}
     </div>
@@ -8,6 +9,10 @@
 <script>
 export default {
     props: {
+        gameId: {
+            type: Number,
+            required: true
+        },
         team: {
             type: Object,
             required: true,
@@ -16,6 +21,12 @@ export default {
             }
         }
     },
+    methods: {
+        chooseWinner() {
+            //set winner of gameId to team.id
+            //set team1 of next corresponding game
+        }
+    }
     
 }
 </script>
