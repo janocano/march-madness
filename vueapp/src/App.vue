@@ -1,16 +1,25 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
+    <bracket-item :gameId="0" :team="dummyTeam" />
   </div>
 </template>
 
 <script>
-import BaseButton from "./components/BaseButton.vue";
+
+import BracketItem from "./components/BracketItem.vue";
 
 export default {
   name: 'App',
   components: {
-    BaseButton
+    BracketItem
+  },
+  data() {
+    return {
+      dummyTeam: {
+        id: 34,
+        name: "Arizona"
+      }
+    };
   }
 }
 </script>
@@ -20,8 +29,8 @@ export default {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  height: 100%;
+  width: 100%;
+  background-color: #2c3e50;
 }
 </style>
