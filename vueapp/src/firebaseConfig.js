@@ -1,11 +1,26 @@
-export default {
-    apiKey: "AIzaSyB1JfnIM62P2ggb89RcPnw6CQF_rtEFcqE",
-    authDomain: "march-madness-pte-claire.firebaseapp.com",
-    databaseURL: "https://march-madness-pte-claire.firebaseio.com",
-    projectId: "march-madness-pte-claire",
-    storageBucket: "march-madness-pte-claire.appspot.com",
-    messagingSenderId: "897741559361",
-    appId: "1:897741559361:web:54b19db9bdafcca85118c0",
-    measurementId: "G-YPK32QXJYP"
+import firebase from 'firebase'
+import 'firebase/firestore'
 
+// firebase init goes here
+const config = {
+	apiKey: process.env.API_KEY,
+	authDomain: process.env.AUTH_DOMAIN,
+	databaseURL: process.env.DATABASE_URL,
+	projectId: process.env.PROJECT_ID,
+	storageBucket: process.env.STORAGE_BUCKET,
+    messagingSenderId: process.env.MESSAGING_SENDER_ID,
+    appId: process.env.ADD_ID,
+    measurementId: process.env.MEASUREMENT_ID, 
+}
+firebase.initializeApp(config)
+
+// firebase utils
+const db = firebase.firestore()
+const auth = firebase.auth()
+const currentUser = auth.currentUser
+
+export {
+    db,
+    auth,
+    currentUser,
 }
