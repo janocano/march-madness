@@ -16,8 +16,8 @@ export default {
         team: {
             type: Object,
             required: true,
-            validator(value) {
-                return value.hasOwnProperty('id') && value.hasOwnProperty('name');
+            validator(team) {
+                return Object.prototype.hasOwnProperty.call(team, "id") && Object.prototype.hasOwnProperty.call(team, "name");
             }
         }
     },
@@ -32,11 +32,15 @@ export default {
 </script>
 <style scoped>
 .bracketItem{
+    display: flex;
+    justify-content: center;
+    align-items: center;
     height: 20px;
     width: 100px;
-    background-color: #fff;
+    background-color: #e6e6e6;
     font-size: 12px;
     font-style: italic;
+    font-weight: 700;
     color: #000;
 }
 
