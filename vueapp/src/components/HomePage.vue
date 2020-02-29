@@ -1,17 +1,17 @@
 <template>
     <div id="homePage">
-        <base-button class="loginButton" @click.native="goToLoginPage()">
+        <home-page-button class="loginButton" @click.native="goToLoginPage()">
             <template slot="text">
                 Login
             </template>
-        </base-button>
+        </home-page-button>
     </div>
 </template>
 <script>
-import BaseButton from "./BaseButton.vue";
+import HomePageButton from "./HomePageButton.vue";
 export default {
     components: {
-        BaseButton
+        HomePageButton
     }, 
     methods: {
         goToLoginPage() {
@@ -21,5 +21,8 @@ export default {
 };
 </script>
 <style scoped>
+.loginButton {
+    
+}
 
 </style>
