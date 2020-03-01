@@ -39,7 +39,7 @@ export default {
                 const response = await this.$store.dispatch("postLogin", data);
                 this.$router.go("/dashboard");
             } catch (error) {
-                alert("Whoops! There was an error loging in :(");
+                alert("Whoops! There was an error logging in :(");
             }
         }
     }

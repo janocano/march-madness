@@ -56,6 +56,15 @@ export default new Vuex.Store({
             } catch (error) {
                 return Promise.reject(error);
             }
+        },
+        async postLogin({}, payload) {
+            try {
+                //post login
+                const response = {};
+                return Promise.resolve(response);
+            } catch (error) {
+                return Promise.reject(error);
+            }
         }
     }
 });
