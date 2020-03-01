@@ -7,6 +7,7 @@ import App from './App.vue';
 import HomePage from "./components/HomePage.vue";
 import LoginPage from "./components/LoginPage.vue";
 import SignUpPage from "./components/SignUpPage.vue";
+import DashboardPage from "./components/DashboardPage.vue";
 
 Vue.use(Vuex);
 Vue.use(VueRouter);
@@ -16,7 +17,8 @@ Vue.config.productionTip = false
 const routes = [
   { path: '/', component: HomePage },
   { path: '/login', component: LoginPage },
-  { path: '/signup', component: SignUpPage }
+  { path: '/signup', component: SignUpPage },
+  { path: '/dashboard', component: DashboardPage }
 ];
 const router = new VueRouter({
   routes
