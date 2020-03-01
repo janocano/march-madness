@@ -1,3 +1,5 @@
+import Vue from 'vue'
+import App from './App.vue'
 import Vue from 'vue';
 import Vuex from 'vuex';
 import VueRouter from "vue-router";
@@ -9,8 +11,11 @@ import LoginPage from "./components/LoginPage.vue";
 import SignUpPage from "./components/SignUpPage.vue";
 import DashboardPage from "./components/DashboardPage.vue";
 
+const fb = require('./firebaseConfig.js')
+
 Vue.use(Vuex);
 Vue.use(VueRouter);
+
 
 Vue.config.productionTip = false
 
