@@ -21,7 +21,7 @@ export default {
             required: false,
             default: "default",
             validator(value) {
-                return ["default", "cancel"].indexOf(value) !== -1;
+                return ["default", "cancel", "purple"].indexOf(value) !== -1;
             }
         }
     },
@@ -48,6 +48,7 @@ export default {
     align-items: center;
     justify-content: space-between;
     height: 35px;
+    width: fit-content;
     border-radius: 1px 6px 1px 6px;
     padding: 5px 10px;
     border: none;
@@ -60,11 +61,18 @@ export default {
     background-color: #ffbf86;
 }
 .baseButton--cancel {
-    background-color: #fff;
     border: solid 2px #e3e3e3;
+    background-color: #fff;
 }
 .baseButton--cancel:hover {
     background-color: #e3e3e3;
+}
+.baseButton--purple {
+    border: solid 5px#a594b7;
+    background-color:#cfbae5;
+}
+.baseButton--purple:hover {
+    background-color: #baa7ce;
 }
 .baseButton__text {
     font-size: 14px;
@@ -75,6 +83,9 @@ export default {
 }
 .baseButton__text--cancel {
     color: #6e6e6e;
+}
+.baseButton__text--purple {
+    color: #524a5b;
 }
 
 </style>
