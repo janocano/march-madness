@@ -1,17 +1,16 @@
 <template>
-    <div class="signUp">
-        <div class="signUp__title">
-            sign up form
+    <div class="login">
+        <div class="login__title">
+            login
         </div>
-        <div class="signUp__info">
-            hey! fill out this super easy form to sign up for the march madness family challenge this year.
+        <div class="login__info">
+            hey! enter your username and password to see your march madness stuff.
         </div>
         <base-input-field class="baseInput--margin" v-model="username" placeholder-text="username" />
         <base-input-field class="baseInput--margin" v-model="password" placeholder-text="password" />
-        <base-input-field class="baseInput--margin" v-model="signUpKey" placeholder-text="sign up key" />
-        <base-button class="baseButton--margin" type="purple" @click.native="handleSignUp()">
+        <base-button class="baseButton--margin" type="default" @click.native="handleLogin()">
             <template slot="text">
-                sign me up!
+                login
             </template>
         </base-button>
     </div>
@@ -28,28 +27,26 @@ export default {
         return {
             username: "",
             password: "",
-            signUpKey: ""
         };
     },
     methods: {
-        async handleSignUp() {
+        async handleLogin() {
             let data = {
                 username: this.username,
                 password: this.password,
-                signUpKey: this.signUpKey
             };
             try {
-                const response = await this.$store.dispatch("postNewUser", data);
+                const response = await this.$store.dispatch("postLogin", data);
                 this.$router.go("/dashboard");
             } catch (error) {
-                alert("Whoops! There was an error signing up up :(");
+                alert("Whoops! There was an error logging in :(");
             }
         }
     }
 }
 </script>
 <style scoped>
-.signUp {
+.login {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -59,16 +56,16 @@ export default {
     background-color: #566472;
     border-radius: 5px;
 }
-.signUp__title {
+.login__title {
     align-self: center;
     margin: 10px;
     padding: 5px;
-    border: solid 4px #cfbae5;
+    border: solid 4px peachpuff;
     font-size: 30px;
     font-weight: 900;
     font-style: italic;
 }
-.signUp__info {
+.login__info {
     align-self: center;
     margin: 10px;
     text-align: center;
