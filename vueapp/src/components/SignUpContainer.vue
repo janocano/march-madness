@@ -8,10 +8,10 @@
         </div>
         <base-input-field class="baseInput--margin" v-model="username" placeholder-text="username" />
         <base-input-field class="baseInput--margin" v-model="password" placeholder-text="password" />
-        <base-input-field class="baseInput--margin" v-model="password" placeholder-text="sign up key" />
+        <base-input-field class="baseInput--margin" v-model="signUpKey" placeholder-text="sign up key" />
         <base-button class="baseButton--margin" type="purple" @click.native="handleLogin()">
             <template slot="text">
-                Login
+                Sign up
             </template>
         </base-button>
     </div>
@@ -27,12 +27,23 @@ export default {
     data() {
         return {
             username: "",
-            password: ""
+            password: "",
+            signUpKey: ""
         };
     },
     methods: {
-        handleLogin() {
-
+        async handleLogin() {
+            let data = {
+                username: this.username,
+                password: this.password,
+                signUpKey: this.signUpKey
+            };
+            try {
+                const response = await this.$store.dispatch("postNewUser", data);
+                this.$router.go("/dashboard");
+            } catch (error) {
+                alert("Whoops! There was an error signing up up :(");
+            }
         }
     }
 }
