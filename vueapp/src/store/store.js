@@ -48,5 +48,14 @@ export default new Vuex.Store({
                 winnerId: payload.winnerId
             });
         },
+        async postNewUser({}, payload) {
+            try {
+                //post new sign up
+                const response = {};
+                return Promise.resolve(response);
+            } catch (error) {
+                return Promise.reject(error);
+            }
+        }
     }
 });
