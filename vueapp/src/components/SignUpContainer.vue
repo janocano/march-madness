@@ -11,7 +11,7 @@
         <base-input-field class="baseInput--margin" v-model="signUpKey" placeholder-text="sign up key" />
         <base-button class="baseButton--margin" type="purple" @click.native="handleLogin()">
             <template slot="text">
-                Sign up
+                sign me up!
             </template>
         </base-button>
     </div>
