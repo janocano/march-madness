@@ -47,7 +47,7 @@ export default {
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    height: 35px;
+    height: 45px;
     width: fit-content;
     border-radius: 1px 6px 1px 6px;
     padding: 5px 10px;

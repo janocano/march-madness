@@ -1,8 +1,15 @@
 <template>
     <div class="signUp">
-        <input v-model="username" placeholder="username">
-        <input v-model="password" placeholder="password">
-        <base-button type="purple" @click.native="handleLogin()">
+        <div class="signUp__title">
+            sign up form
+        </div>
+        <div class="signUp__info">
+            hey! fill out this super easy form to sign up for the march madness family challenge this year.
+        </div>
+        <base-input-field class="baseInput--margin" v-model="username" placeholder-text="username" />
+        <base-input-field class="baseInput--margin" v-model="password" placeholder-text="password" />
+        <base-input-field class="baseInput--margin" v-model="password" placeholder-text="sign up key" />
+        <base-button class="baseButton--margin" type="purple" @click.native="handleLogin()">
             <template slot="text">
                 Login
             </template>
@@ -11,9 +18,11 @@
 </template>
 <script>
 import BaseButton from "./BaseButton.vue";
+import BaseInputField from "./BaseInputField.vue";
 export default {
     components: {
-        BaseButton
+        BaseButton,
+        BaseInputField
     },
     data() {
         return {
@@ -38,6 +47,29 @@ export default {
     padding: 40px;
     background-color: #566472;
     border-radius: 5px;
-
+}
+.signUp__title {
+    align-self: center;
+    margin: 10px;
+    padding: 5px;
+    border: solid 4px #cfbae5;
+    font-size: 30px;
+    font-weight: 900;
+    font-style: italic;
+}
+.signUp__info {
+    align-self: center;
+    margin: 10px;
+    text-align: center;
+    font-size: 16px;
+    font-weight: 300;
+    font-style: italic;
+}
+.baseInput--margin {
+    margin: 10px auto;
+}
+.baseButton--margin {
+    margin: 10px auto;
+    justify-self:flex-end;
 }
 </style>
