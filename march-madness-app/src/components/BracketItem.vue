@@ -14,9 +14,14 @@ export default {
     props: {
         team: {
             type: Object,
-            required: true,
+            required: false,
             validator(team) {
                 return Object.prototype.hasOwnProperty.call(team, "id") && Object.prototype.hasOwnProperty.call(team, "name");
+            },
+            default() {
+                return {
+                    name: ""
+                };
             }
         },
         isCorrect: {
