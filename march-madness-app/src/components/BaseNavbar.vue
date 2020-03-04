@@ -1,6 +1,6 @@
 <template>
     <div class="navbar">
-        <div v-for="link in links" :key="link.title" class="navbar__item" :class="{'navbar__item--active': link.isActive}">
+        <div v-for="link in links" :key="link.title" class="navbar__item" :class="{'navbar__item--active': link.isActive}" @click="goToLink(link.url)">
             {{ link.title }}
         </div>
     </div>
@@ -10,6 +10,15 @@ export default {
     props: {
         links: {
             type: Array
+        }
+    },
+    methods: {
+        /**
+         * uses router to go to specified url
+         * @param {String} url
+         */
+        goToLink(url) {
+            this.$router.go(url);
         }
     }
 }
