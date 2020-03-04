@@ -1,5 +1,5 @@
 <template>
-    <input class="baseInput" v-bind:value="value" v-on:input="$emit('input', $event.target.value)" :placeholder="placeholderText"/>
+    <input class="basePassword" type="password" v-bind:value="value" v-on:input="$emit('input', $event.target.value)" :placeholder="placeholderText"/>
 </template>
 <script>
 export default {
@@ -18,7 +18,7 @@ export default {
 }
 </script>
 <style scoped>
-.baseInput{
+.basePassword{
     border: solid 2px #e6e6e6;
     border-radius: 2px;
     font-size: 14px;

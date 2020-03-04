@@ -6,8 +6,8 @@
         <div class="login__info">
             hey! enter your username and password to see your march madness stuff.
         </div>
-        <base-input-field class="baseInput--margin" v-model="username" placeholder-text="username" />
-        <base-input-field class="baseInput--margin" v-model="password" placeholder-text="password" />
+        <base-input-field class="baseInput--margin" v-model="email" placeholder-text="email" />
+        <base-password-field class="baseInput--margin" v-model="password" placeholder-text="password" />
         <base-button class="baseButton--margin" type="default" @click.native="handleLogin()">
             <template slot="text">
                 login
@@ -18,28 +18,44 @@
 <script>
 import BaseButton from "./BaseButton.vue";
 import BaseInputField from "./BaseInputField.vue";
+import BasePasswordField from "./BasePasswordField.vue";
+
 export default {
     components: {
         BaseButton,
-        BaseInputField
+        BaseInputField,
+        BasePasswordField
     },
     data() {
         return {
-            username: "",
+            email: "",
             password: "",
         };
+    },
+    computed: {
+        user() {
+            return this.$store.getters.user
+        }
+    },
+    watch: {
+        user(value) {
+            if(value !== null && value !== undefined){
+                //sign up complete, redirect
+                this.$router.push('/dashboard');
+            }
+        }
     },
     methods: {
         async handleLogin() {
             let data = {
-                username: this.username,
+                email: this.email,
                 password: this.password,
             };
             try {
-                const response = await this.$store.dispatch("postLogin", data);
-                this.$router.go("/dashboard");
+                await this.$store.dispatch("postLogin", data);
             } catch (error) {
                 alert("Whoops! There was an error logging in :(");
+                alert(error);
             }
         }
     }
