@@ -2,14 +2,14 @@
     <div id="dashboardPage">
        <!-- navbar -->
        <!-- content -->
-        <bracket-game-node :game="testGame" />
+        <bracket-view-only />
     </div>
 </template>
 <script>
-import BracketGameNode from "./BracketGameNode.vue";
+import BracketViewOnly from "./BracketViewOnly.vue";
 export default {
     components: {
-        BracketGameNode
+        BracketViewOnly
     },
     data() {
         return {
@@ -27,7 +27,7 @@ export default {
             }
         };
     },
-    
+
     
 }
 </script>
