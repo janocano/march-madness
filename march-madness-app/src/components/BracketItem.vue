@@ -1,7 +1,10 @@
 <template>
     <div 
         class="bracketItem"
-        @click="chooseWinner()"
+        :class="{
+            'bracketItem--green': isCorrect,
+            'bracketItem--red': isIncorrect
+        }"
     >
         {{ team.name }}
     </div>
@@ -9,25 +12,24 @@
 <script>
 export default {
     props: {
-        gameId: {
-            type: Number,
-            required: true
-        },
         team: {
             type: Object,
             required: true,
             validator(team) {
                 return Object.prototype.hasOwnProperty.call(team, "id") && Object.prototype.hasOwnProperty.call(team, "name");
             }
+        },
+        isCorrect: {
+            type: Boolean,
+            required: false,
+            default: false
+        },
+        isIncorrect: {
+            type: Boolean,
+            required: false,
+            default: false
         }
     },
-    methods: {
-        chooseWinner() {
-            //set winner of gameId to team.id
-            //set team1 of next corresponding game
-        }
-    }
-    
 }
 </script>
 <style scoped>
@@ -42,6 +44,12 @@ export default {
     font-style: italic;
     font-weight: 700;
     color: #000;
+}
+.bracketItem--green{
+    background-color: greenyellow;
+}
+.bracketItem--red{
+    background-color: red;
 }
 
 </style>
