@@ -11,7 +11,7 @@
         </div>
         <base-input-field class="baseInput--margin" v-model="email" placeholder-text="email" />
         <base-password-field class="baseInput--margin" v-model="password" placeholder-text="password" />
-        <base-password-field class="baseInput--margin" type="password" v-model="confirmPassword" placeholder-text="confirm password" />
+        <base-password-field class="baseInput--margin" v-model="confirmPassword" placeholder-text="confirm password" />
         <base-input-field class="baseInput--margin" v-model="signUpKey" placeholder-text="sign up key" />
         <base-button class="baseButton--margin" type="purple" @click.native="handleSignUp()">
             <template slot="text">

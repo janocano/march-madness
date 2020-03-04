@@ -1,9 +1,17 @@
 import Vue from 'vue';
 import Vuex from "vuex";
+import VuexPersist from 'vuex-persist'
 const firebase = require('../firebaseConfig.js')
 
 Vue.use(Vuex);
+
+const vuexPersist = new VuexPersist({
+    key: 'my-app',
+    storage: window.localStorage
+})
+
 export default new Vuex.Store({
+    plugins: [vuexPersist.plugin],
     state:{
         user: null,
         games: []
@@ -63,8 +71,9 @@ export default new Vuex.Store({
                     .then(
                         user => {
                             const newUser = {
-                                id: user.uid
+                                id: user.user.uid,
                             };
+                            
                             commit('SET_USER', newUser);
                         }
                     );
@@ -75,19 +84,28 @@ export default new Vuex.Store({
         },
         async postLogin({ commit }, payload) {
             try {
-                //post login
-                payload;
-                commit('setUser', {id:-1})
-                const response = {};
-                return Promise.resolve(response);
+                let user = await firebase.auth.signInWithEmailAndPassword(payload.email, payload.password);
+                const newUser = {
+                    id: user.user.uid,
+                }
+                commit('SET_USER', newUser)
+                return Promise.resolve(200);
             } catch (error) {
                 return Promise.reject(error);
             }
+        },
+        async postLogout({ commit }) {
+            await firebase.auth.signOut()
+            commit('SET_USER', null)
+        },
+
+        async autoSignIn( { commit }, payload) {
+            commit('SET_USER', {id: payload.user.uid});
         }
     },
     getters: {
         user (state) {
             return state.user;
-        }
+        },
     }
 });

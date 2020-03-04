@@ -1,5 +1,6 @@
 import firebase from 'firebase'
 import 'firebase/firestore'
+import  store  from "./store/store.js";
 
 // firebase init goes here
 const config = {
@@ -18,6 +19,13 @@ firebase.initializeApp(config)
 const db = firebase.firestore()
 const auth = firebase.auth()
 const currentUser = auth.currentUser
+
+//keep users signed in
+auth.onAuthStateChanged(user => {
+    if(user){
+        store.dispatch('autoSignIn',{ user })
+    }
+})
 
 export {
     db,
