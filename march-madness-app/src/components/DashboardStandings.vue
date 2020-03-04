@@ -1,5 +1,5 @@
 <template>
-    <div class="bracket">
+    <div class="standings">
     </div>
 </template>
 <script>
@@ -8,8 +8,9 @@ export default {
 }
 </script>
 <style scoped>
-.bracket {
-    padding: 20px;
+.standings {
+    margin: 10px;
+    padding: 10px;
     background-color: #566472;
     border-radius: 5px;
 }

@@ -1,15 +1,20 @@
 <template>
-    <div id="dashboardPage">
-       <!-- navbar -->
-       <!-- content -->
-        <bracket-view-only />
+    <div id="dashboardPage" class="dashboard">
+        
+       
+        <div class="dashboard__content">
+            <dashboard-standings />
+            <dashboard-bracket />
+        </div>
     </div>
 </template>
 <script>
-import BracketViewOnly from "./BracketViewOnly.vue";
+import DashboardBracket from "./DashboardBracket.vue";
+import DashboardStandings from "./DashboardStandings.vue";
 export default {
     components: {
-        BracketViewOnly
+        DashboardBracket,
+        DashboardStandings
     },
     data() {
         return {
@@ -32,5 +37,9 @@ export default {
 }
 </script>
 <style scoped>
+.dashboard__content {
+    display: flex;
+    flex-direction: row;
+}
 
 </style>
