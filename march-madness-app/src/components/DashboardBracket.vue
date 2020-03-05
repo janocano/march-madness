@@ -3,8 +3,7 @@
         <template v-for="(round, index) in rounds">
             <div class="round" :key="index" :class="['round-' + round]">
                 <template v-for="(match, matchIndex) in round">
-                    <!-- <div class="match" :key="matchIndex"><div class="match__content" :style="matchStyle"></div></div> -->
-                    <bracket-game-node class="match" :key="matchIndex"/>
+                    <div class="match" :key="matchIndex"><bracket-game-node class="match__content" :game="testGames[matchIndex + round]"/></div>
                 </template>
             </div>
         </template>
@@ -29,7 +28,93 @@ export default {
     },
     data() {
         return {
-            rounds: [64, 32, 16, 8, 4, 2, 1]
+            rounds: [4, 2, 1],
+            testGames: [
+                {
+                    id: 1,
+                    first_team: {
+                        id: 1,
+                        name: "ASU",
+                    },
+                    second_team: {
+                        id: 2,
+                        name: "Duke",
+                    },
+                    winner_id: 1
+                },
+                {
+                    id: 2,
+                    first_team: {
+                        id: 1,
+                        name: "North Carolina",
+                    },
+                    second_team: {
+                        id: 2,
+                        name: "Bulldogs",
+                    },
+                    winner_id: 1
+                },
+                {
+                    id: 3,
+                    first_team: {
+                        id: 1,
+                        name: "Cavaliers",
+                    },
+                    second_team: {
+                        id: 2,
+                        name: "Loyola Chicago",
+                    },
+                    winner_id: 1
+                },
+                {
+                    id: 4,
+                    first_team: {
+                        id: 1,
+                        name: "Minesota",
+                    },
+                    second_team: {
+                        id: 2,
+                        name: "ST Baarts",
+                    },
+                    winner_id: 1
+                },
+                {
+                    id: 5,
+                    first_team: {
+                        id: 1,
+                        name: "LSU",
+                    },
+                    second_team: {
+                        id: 2,
+                        name: "Gonzaga",
+                    },
+                    winner_id: 1
+                },
+                {
+                    id: 6,
+                    first_team: {
+                        id: 1,
+                        name: "Vermont",
+                    },
+                    second_team: {
+                        id: 2,
+                        name: "Connecticut",
+                    },
+                    winner_id: 1
+                },
+                {
+                    id: 7,
+                    first_team: {
+                        id: 1,
+                        name: "Montreal",
+                    },
+                    second_team: {
+                        id: 2,
+                        name: "Toronto",
+                    },
+                    winner_id: 1
+                },
+            ]
         };
     }
 }

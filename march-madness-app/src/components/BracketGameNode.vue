@@ -33,6 +33,10 @@ export default
 }
 </script>
 <style scoped>
+.gameNode{
+    display: flex;
+    flex-direction: column;
+}
 .gameNode__line {
     border: solid 1px #000;
 }
