@@ -15,7 +15,7 @@ export default
     props: {
         game: {
             type: Object,
-            required: true,
+            required: false,
             validator(game) {
                 return Object.prototype.hasOwnProperty.call(game, "id") 
                     && Object.prototype.hasOwnProperty.call(game, "first_team")
