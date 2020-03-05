@@ -3,7 +3,7 @@
         <template v-for="(round, index) in rounds">
             <div class="round" :key="index" :class="['round-' + round]">
                 <template v-for="(match, matchIndex) in round">
-                    <div class="match" :key="matchIndex"><bracket-game-node class="match__content" :game="testGames[matchIndex + round]"/></div>
+                    <div class="match" :key="matchIndex"><bracket-game-node class="match__content" :game="getGameForBracket(matchIndex, index)"/></div>
                 </template>
             </div>
         </template>
@@ -116,6 +116,24 @@ export default {
                 },
             ]
         };
+    },
+    methods: {
+        /**
+         * Calculates which game to return depending on which round we are in and which match in the round we are at.
+         * @param {Number} matchIndex
+         * @param {Number} roundIndex
+         * @returns {Object}
+         */
+        getGameForBracket(matchIndex, roundIndex) {
+            if (roundIndex === 0) {
+                return this.testGames[matchIndex];
+            } 
+            let totalPrevMatches = 0;
+            for (let i = 0; i < roundIndex; i++) {
+                totalPrevMatches = totalPrevMatches + this.rounds[i];
+            }
+            return this.testGames[totalPrevMatches + matchIndex];
+        }
     }
 }
 </script>
