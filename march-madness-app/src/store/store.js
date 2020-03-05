@@ -67,16 +67,15 @@ export default new Vuex.Store({
         async postNewUser({ commit }, payload) {
             try {
                 //post new sign up
-                firebase.auth.createUserWithEmailAndPassword(payload.email, payload.password)
-                    .then(
-                        user => {
-                            const newUser = {
-                                id: user.user.uid,
-                            };
-                            
-                            commit('SET_USER', newUser);
-                        }
-                    );
+                let user = await firebase.auth.createUserWithEmailAndPassword(payload.email, payload.password)
+                const newUser = {
+                    id: user.user.uid,
+                    email: payload.email,
+                    username: payload.username,
+                    team_id: null,
+                };
+                await firebase.db.collection('users').doc(newUser.id).set(newUser);
+                commit('SET_USER', newUser);
                 return Promise.resolve(200);
             } catch (error) {
                 return Promise.reject(error);
@@ -84,11 +83,9 @@ export default new Vuex.Store({
         },
         async postLogin({ commit }, payload) {
             try {
-                let user = await firebase.auth.signInWithEmailAndPassword(payload.email, payload.password);
-                const newUser = {
-                    id: user.user.uid,
-                }
-                commit('SET_USER', newUser)
+                let authed_user = await firebase.auth.signInWithEmailAndPassword(payload.email, payload.password);
+                let user = await firebase.db.collection('users').doc(authed_user.user.uid).get();
+                commit('SET_USER', user.data())
                 return Promise.resolve(200);
             } catch (error) {
                 return Promise.reject(error);

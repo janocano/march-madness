@@ -10,6 +10,7 @@
             password must be at least 8 characters
         </div>
         <base-input-field class="baseInput--margin" v-model="email" placeholder-text="email" />
+        <base-input-field class="baseInput--margin" v-model="username" placeholder-text="username" />
         <base-password-field class="baseInput--margin" v-model="password" placeholder-text="password" />
         <base-password-field class="baseInput--margin" v-model="confirmPassword" placeholder-text="confirm password" />
         <base-input-field class="baseInput--margin" v-model="signUpKey" placeholder-text="sign up key" />
@@ -33,6 +34,7 @@ export default {
     data() {
         return {
             email: "",
+            username: "",
             password: "",
             confirmPassword: "",
             signUpKey: ""
@@ -67,6 +69,7 @@ export default {
 
             let data = {
                 email: this.email,
+                username: this.username,
                 password: this.password,
                 confirmPassword: this.confirmPassword,
                 signUpKey: this.signUpKey
