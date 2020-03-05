@@ -6,8 +6,12 @@
         <div class="signUp__info">
             hey! fill out this super easy form to sign up for the march madness family challenge this year.
         </div>
-        <base-input-field class="baseInput--margin" v-model="username" placeholder-text="username" />
-        <base-input-field class="baseInput--margin" v-model="password" placeholder-text="password" />
+        <div class="signUp__info">
+            password must be at least 8 characters
+        </div>
+        <base-input-field class="baseInput--margin" v-model="email" placeholder-text="email" />
+        <base-password-field class="baseInput--margin" v-model="password" placeholder-text="password" />
+        <base-password-field class="baseInput--margin" v-model="confirmPassword" placeholder-text="confirm password" />
         <base-input-field class="baseInput--margin" v-model="signUpKey" placeholder-text="sign up key" />
         <base-button class="baseButton--margin" type="purple" @click.native="handleSignUp()">
             <template slot="text">
@@ -19,30 +23,60 @@
 <script>
 import BaseButton from "./BaseButton.vue";
 import BaseInputField from "./BaseInputField.vue";
+import BasePasswordField from "./BasePasswordField.vue";
 export default {
     components: {
         BaseButton,
-        BaseInputField
+        BaseInputField,
+        BasePasswordField
     },
     data() {
         return {
-            username: "",
+            email: "",
             password: "",
+            confirmPassword: "",
             signUpKey: ""
         };
     },
+    computed: {
+        user() {
+            return this.$store.getters.user
+        }
+    },
+    watch: {
+        user(value) {
+            if(value !== null && value !== undefined){
+                //sign up complete, redirect
+                this.$router.push('/dashboard');
+            }
+        }
+    },
     methods: {
         async handleSignUp() {
+            //make sure both passwords are equal
+            if(this.confirmPassword.length < 8){
+                alert("Password is too short, please make it at least 8 characters");
+                return;
+            }
+            if(this.confirmPassword !== this.password){
+                alert("Passwords don't match");
+                return;
+            }
+
+            //TODO: add check for signup key (can be a env var)
+
             let data = {
-                username: this.username,
+                email: this.email,
                 password: this.password,
+                confirmPassword: this.confirmPassword,
                 signUpKey: this.signUpKey
             };
+            data;
             try {
-                const response = await this.$store.dispatch("postNewUser", data);
-                this.$router.go("/dashboard");
+                await this.$store.dispatch("postNewUser", data);
             } catch (error) {
                 alert("Whoops! There was an error signing up up :(");
+                alert(error);
             }
         }
     }
