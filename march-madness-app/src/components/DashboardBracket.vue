@@ -45,72 +45,72 @@ export default {
                 {
                     id: 2,
                     first_team: {
-                        id: 1,
+                        id: 3,
                         name: "North Carolina",
                     },
                     second_team: {
-                        id: 2,
+                        id: 4,
                         name: "Bulldogs",
                     },
-                    winner_id: 1
+                    winner_id: 4
                 },
                 {
                     id: 3,
                     first_team: {
-                        id: 1,
+                        id: 5,
                         name: "Cavaliers",
                     },
                     second_team: {
-                        id: 2,
+                        id: 6,
                         name: "Loyola Chicago",
                     },
-                    winner_id: 1
+                    winner_id: 5
                 },
                 {
                     id: 4,
                     first_team: {
-                        id: 1,
+                        id: 7,
                         name: "Minesota",
                     },
                     second_team: {
-                        id: 2,
+                        id: 8,
                         name: "ST Baarts",
                     },
-                    winner_id: 1
+                    winner_id: 7
                 },
                 {
                     id: 5,
                     first_team: {
                         id: 1,
-                        name: "LSU",
+                        name: "ASU",
                     },
                     second_team: {
-                        id: 2,
-                        name: "Gonzaga",
+                        id: 4,
+                        name: "Bulldogs",
                     },
                     winner_id: 1
                 },
                 {
                     id: 6,
                     first_team: {
-                        id: 1,
-                        name: "Vermont",
+                        id: 5,
+                        name: "Cavaliers",
                     },
                     second_team: {
-                        id: 2,
-                        name: "Connecticut",
+                        id: 7,
+                        name: "Minesota",
                     },
-                    winner_id: 1
+                    winner_id: 5
                 },
                 {
                     id: 7,
                     first_team: {
                         id: 1,
-                        name: "Montreal",
+                        name: "ASU",
                     },
                     second_team: {
-                        id: 2,
-                        name: "Toronto",
+                        id: 5,
+                        name: "Cavaliers",
                     },
                     winner_id: 1
                 },
