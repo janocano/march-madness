@@ -15,7 +15,7 @@ export default
     props: {
         game: {
             type: Object,
-            required: true,
+            required: false,
             validator(game) {
                 return Object.prototype.hasOwnProperty.call(game, "id") 
                     && Object.prototype.hasOwnProperty.call(game, "first_team")
@@ -33,6 +33,10 @@ export default
 }
 </script>
 <style scoped>
+.gameNode{
+    display: flex;
+    flex-direction: column;
+}
 .gameNode__line {
     border: solid 1px #000;
 }
